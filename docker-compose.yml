@@ -1,0 +1,9 @@
+version: '2'
+services:
+        gc2bot:
+                build: .
+                tty: true
+                volumes:
+                        - ./src:/mnt/
+                env_file:
+                        - .env
