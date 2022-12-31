@@ -20,7 +20,8 @@ jobs:
         run: |
           git commit --allow-empty -m "prevent automatic workflow stopping" -m "see: https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow"
           git push
-      - name: notify github trend
+      - name: toot gc2
         run: |
              echo "hello world"
              echo -n ${ENCODED_ENV} | base64 -d > .env
+             docker-compose run gc2bot python -u main.py
