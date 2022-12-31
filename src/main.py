@@ -8,7 +8,6 @@ from mastodon import Mastodon
 yt_base_url ="https://www.youtube.com"
 url = os.getenv("MASTODON_URL")
 token = os.getenv("MASTODON_TOKEN")
-print(os.getenv("SEARCH_KEYWORDS"))
 keywords = json.loads(os.getenv("SEARCH_KEYWORDS")) 
 
 mastodon = Mastodon(

@@ -1,7 +1,7 @@
 name: cronjob
-on: push
-#  schedule:
-#    - cron: "0 0 * * *" # 毎日8時間毎に定期実行(時間がutcなので注意)
+on: #push
+  schedule:
+    - cron: "0 0 * * *" # 毎日8時間毎に定期実行(時間がutcなので注意)
 jobs:
   toot_gc2:
     runs-on: ubuntu-latest
@@ -21,7 +21,10 @@ jobs:
           git commit --allow-empty -m "prevent automatic workflow stopping" -m "see: https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow"
           git push
       - name: toot gc2
+        env:
+          ENCODED_ENV: ${{ secrets.ENCODED_ENV }}
         run: |
-             echo "hello world"
+             echo "start"  
              echo -n ${ENCODED_ENV} | base64 -d > .env
-             docker-compose run gc2bot python -u main.py
+             docker-compose up -d
+             docker-compose exec -T gc2bot python -u main.py
