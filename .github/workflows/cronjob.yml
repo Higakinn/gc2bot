@@ -26,5 +26,5 @@ jobs:
         run: |
              echo "start"  
              echo -n ${ENCODED_ENV} | base64 -d > .env
-             docker-compose up -d
-             docker-compose exec -T gc2bot python -u main.py
+            #  docker-compose up -d
+            #  docker-compose exec -T gc2bot python -u main.py
